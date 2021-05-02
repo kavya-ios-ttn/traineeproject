@@ -7,10 +7,25 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    //url is takes from the context unlike in AppDelegate 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            open: url,
+            sourceApplication: nil,
+            annotation: [UIApplication.OpenURLOptionsKey.annotation]
+        )
+    }
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,7 +33,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-    }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // if User is logged in before
+            if UserDefaults.standard.string(forKey: "username") != nil {
+                // instantiate the main tab bar controller and set it as root view controller
+                // using the storyboard identifier we set earlier
+                let MainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+                window?.rootViewController = MainTabBarController
+            } else {
+                // if user isn't logged in
+                // instantiate the navigation controller and set it as root view controller
+                // using the storyboard identifier we set earlier
+                let LoginPageViewController = storyboard.instantiateViewController(identifier: "LoginPageViewController")
+                window?.rootViewController = LoginPageViewController
+            }
+        }
+        
+        func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+            guard let window = self.window else {
+                return
+            }
+            
+            // change the root view controller to your specific view controller
+            window.rootViewController = vc
+        }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
