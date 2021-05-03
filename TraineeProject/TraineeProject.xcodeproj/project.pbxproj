@@ -16,7 +16,6 @@
 		456D936F263BE93900F443DB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456D936D263BE93900F443DB /* TableViewCell.xib */; };
 		456D9372263BECDB00F443DB /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456D9370263BECDB00F443DB /* MainCollectionViewCell.swift */; };
 		456D9373263BECDB00F443DB /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456D9371263BECDB00F443DB /* MainCollectionViewCell.xib */; };
-		456D9376263BF37100F443DB /* APIIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456D9375263BF37100F443DB /* APIIntegration.swift */; };
 		456D9378263E6BC100F443DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456D9377263E6BC100F443DB /* GoogleService-Info.plist */; };
 		456D937B263EA0FB00F443DB /* ImageViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456D937A263EA0FB00F443DB /* ImageViewEx.swift */; };
 		456D937D263EA11900F443DB /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456D937C263EA11900F443DB /* StringEx.swift */; };
@@ -75,7 +74,6 @@
 		456D936D263BE93900F443DB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		456D9370263BECDB00F443DB /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		456D9371263BECDB00F443DB /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
-		456D9375263BF37100F443DB /* APIIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIIntegration.swift; sourceTree = "<group>"; };
 		456D9377263E6BC100F443DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		456D937A263EA0FB00F443DB /* ImageViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewEx.swift; sourceTree = "<group>"; };
 		456D937C263EA11900F443DB /* StringEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				456D9366263BDB9600F443DB /* CoreDataManager.swift */,
-				456D9375263BF37100F443DB /* APIIntegration.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 				456D9395263EA43D00F443DB /* LightTheme.swift in Sources */,
 				45FA5A22262EE888009815EB /* SceneDelegate.swift in Sources */,
 				456D938A263EA39700F443DB /* NetworkManager.swift in Sources */,
-				456D9376263BF37100F443DB /* APIIntegration.swift in Sources */,
 				456D937D263EA11900F443DB /* StringEx.swift in Sources */,
 				456D939F263EB78200F443DB /* BannerCollectionViewCell.swift in Sources */,
 				456D9386263EA26900F443DB /* MovieInfoModel.swift in Sources */,

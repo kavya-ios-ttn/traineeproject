@@ -8,15 +8,28 @@
 
 import UIKit
 
-@IBOutlet weak var homePageTableView: UITableView!
+class HomePageViewController: UIViewController {
+    
+    @IBOutlet weak var homePageTableView: UITableView!
     let homeVM = HomeViewModel()
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetchHomeScreenData), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        homePageTableView.addSubview(self.refreshControl)
         homePageTableView.register(CustomTableViewCell.nib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
+        homePageTableView.register(BannerTableViewCell.nib(), forCellReuseIdentifier: BannerTableViewCell.identifier)
         homePageTableView.delegate = self
         homePageTableView.dataSource = self
+        homePageTableView.estimatedRowHeight = UITableView.automaticDimension
+        homePageTableView.rowHeight = UITableView.automaticDimension
         fetchHomeScreenData()
         
         // Do any additional setup after loading the view.
@@ -28,8 +41,9 @@ import UIKit
         homePageTableView.backgroundColor = Theme.current.background
     }
     
-    func fetchHomeScreenData(){
+    @objc func fetchHomeScreenData(){
         homeVM.fetchHomeApiData { (success, message) in
+            self.refreshControl.endRefreshing()
             if success {
                 self.homePageTableView.reloadData()
             } else {
@@ -47,15 +61,24 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = homePageTableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
-        cell.configure(homeVM.homeApiData[indexPath.row])
-        return cell
+        if indexPath.row == 0 {
+            let cell = homePageTableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier, for: indexPath) as! BannerTableViewCell
+            cell.configure(homeVM.homeApiData[indexPath.row])
+            return cell
+        } else {
+            let cell = homePageTableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+            cell.configure(homeVM.homeApiData[indexPath.row])
+            return cell
+        }
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 310.0
+        if indexPath.row == 0 {
+            return homePageTableView.frame.width * (9/16)
+        } else {
+            return UITableView.automaticDimension
+        }
     }
     
 }
-

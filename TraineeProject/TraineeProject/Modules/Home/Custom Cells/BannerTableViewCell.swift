@@ -8,7 +8,6 @@
 
 import UIKit
 
-import UIKit
 
 class BannerTableViewCell: UITableViewCell {
 
@@ -41,7 +40,7 @@ class BannerTableViewCell: UITableViewCell {
     }
     
     func configure(_ data: HomeData){
-        movieData = data.movieData
+        movieInfo = data.movieInfo
         bannerCollectionView.reloadData()
     }
     
@@ -55,7 +54,7 @@ class BannerTableViewCell: UITableViewCell {
         
         for cell in bannerCollectionView.visibleCells {
             let indexPath: IndexPath = bannerCollectionView.indexPath(for: cell)!
-            if (indexPath.row < (movieData?.count ?? 0) - 1){
+            if (indexPath.row < (movieInfo?.count ?? 0) - 1){
                 let indexPath1 = IndexPath.init(row: indexPath.row + 1, section: indexPath.section)
                 bannerCollectionView.scrollToItem(at: indexPath1, at: .left, animated: true)
             } else {
@@ -75,7 +74,7 @@ extension BannerTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.identifier, for: indexPath) as! BannerCollectionViewCell
-        cell.configure(movieData?[indexPath.row])
+        cell.configure(movieInfo?[indexPath.row])
         return cell
         
     }

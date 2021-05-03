@@ -20,9 +20,9 @@ class HomeViewModel {
                         switch result{
                         case .success(let data):
                             if genre == .banner {
-                                self.homeApiData.insert(HomeData(sectionTitle: genre.rawValue, movieData: data.results), at: 0)
+                                self.homeApiData.insert(HomeData(sectionTitle: genre.rawValue, movieInfo: data.results), at: 0)
                             } else {
-                                self.homeApiData.append(HomeData(sectionTitle: genre.rawValue, movieData: data.results))
+                                self.homeApiData.append(HomeData(sectionTitle: genre.rawValue, movieInfo: data.results))
                             }
                             completion(true, "")
                         case .failure(let error):

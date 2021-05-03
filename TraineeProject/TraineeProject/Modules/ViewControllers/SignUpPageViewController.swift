@@ -25,8 +25,7 @@ class SignUpPageViewController: UIViewController {
     
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
+    @IBOutlet weak var myDatePicker: UIDatePicker!
     
     var newUserData = [NewUserData?]()
     
@@ -35,8 +34,8 @@ class SignUpPageViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
+        myDatePicker.datePickerMode = .date
+        myDatePicker.preferredDatePickerStyle = .automatic
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
@@ -50,7 +49,7 @@ class SignUpPageViewController: UIViewController {
                         openAlert(title: "Alert", message: "Please enter your Last Name", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in }])
                         print("Please enter your Last Name")
                         
-                    }else if !emailID.validateEmailId(){
+                    }else if !email.validateEmailId(){
                         openAlert(title: "Alert", message: "Please enter valid email ID", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in }])
                         print("email is not valid")
                         
@@ -65,7 +64,7 @@ class SignUpPageViewController: UIViewController {
                         }else{
                             if password == conPassword{
                                 // navigation code
-                                newUserData = [CoreDataManager.shared.createUserDetails(firstName: firstNameTextField!.text ?? "", lastName: lastNameTextField!.text ?? "", email: emailTextField!.text ?? "", password: confirmPasswordTextField!.text ?? "", dateOfBirth: datePicker!.date)]
+                                newUserData = [CoreDataManager.shared.createUserDetails(firstName: firstNameTextField!.text ?? "", lastName: lastNameTextField!.text ?? "", emailID: emailTextField!.text ?? "", password: confirmPasswordTextField!.text ?? "", dob: myDatePicker!.date)]
                                 //        print("usedata = \(String(describing: userData[0]))")
                                 //        print("\(UserData.self)")
                                 

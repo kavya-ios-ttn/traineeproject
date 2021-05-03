@@ -10,24 +10,27 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
         
-        @IBOutlet weak var expandButton: UIButton!
-        @IBOutlet weak var titleLabel: UILabel!
-        @IBOutlet weak var genreCollectionView: UICollectionView!
-        @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
-        var movieData: [MovieData]?
+   
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var genreCollectionView: UICollectionView!
+    
+//    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    
+        var movieInfo: [MovieInfo]?
         
-        static let identifier = "CustomTableViewCell"
+        static let identifier = "TableViewCell"
         
         static func nib() -> UINib {
-            return UINib(nibName: "CustomTableViewCell", bundle: nil)
+            return UINib(nibName: "TableViewCell", bundle: nil)
         }
         
         override func awakeFromNib() {
             super.awakeFromNib()
             // Initialization code
-            expandButton.isHidden = true
+            //expandButton.isHidden = true
             self.selectionStyle = .none
-            genreCollectionView.register(CustomCollectionViewCell.nib(), forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+            genreCollectionView.register(MainCollectionViewCell.nib(), forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
             
             genreCollectionView.layer.cornerRadius = 10
             genreCollectionView.layer.shadowColor = UIColor.gray.cgColor
@@ -46,7 +49,7 @@ class CustomTableViewCell: UITableViewCell {
         
         func configure(_ data: HomeData){
             titleLabel.text = data.sectionTitle
-            movieData = data.movieData
+            movieInfo = data.movieInfo
             genreCollectionView.reloadData()
             //buttonAction()
         }
@@ -59,12 +62,12 @@ class CustomTableViewCell: UITableViewCell {
 
     extension CustomTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return movieData?.count ?? 0
+            return movieInfo?.count ?? 0
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
-            cell.configure(movieData?[indexPath.row])
+            let cell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as! MainCollectionViewCell
+            cell.configure(movieInfo?[indexPath.row])
             return cell
             
         }

@@ -23,7 +23,6 @@ class MenuBarViewController: UIViewController {
         
         @IBAction func logoutButtonTapped(_ sender: Any) {
             
-            
             UserDefaults.standard.set(false, forKey: "ISUSERLOGGEDIN")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")

@@ -14,10 +14,13 @@ enum ApiConstants {
     case user
     
     enum genre: String, CaseIterable {
-        case popularity = "popularity"
-        case bestDrama = "bestDrama"
-        case kidsMovies = "kidsMovies"
-        case bestMovies = "bestMovies"
+        
+        case banner = "Banner"
+        case popularity = "Popularity"
+        case bestDrama = "Best Drama"
+        case kidsMovies = "Kids Movies"
+        case bestMovies = "Best Movies"
+        
     }
     var finalUrl: String{
         return baseUrl + endUrl + apiKey
@@ -36,12 +39,14 @@ enum ApiConstants {
         switch self {
         case .home(let genre):
             switch  genre {
+            case .banner:
+                return "trending/movie/day?"
             case .popularity:
                 return "discover/movie?sort_by=popularity.desc"
             case .bestDrama:
                 return "discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10"
             case .kidsMovies:
-                return "discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc"
+                return "discover/movie?certification_country=US&certification.lte=G&sort_by=vote_average.desc"
             case .bestMovies:
                 return "discover/movie?primary_release_year=2010&sort_by=vote_average.desc"
             }
@@ -61,4 +66,3 @@ enum ApiConstants {
         }
     }
 }
-
