@@ -324,6 +324,7 @@
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="Hbh-Db-KTj" id="0eL-3w-GFx"/>
                         <outlet property="emailTextField" destination="OjE-AF-QaE" id="hYp-Sh-2hx"/>
+                        <outlet property="firstNameTextField" destination="6Lx-gX-0WU" id="8CO-ra-3c6"/>
                         <outlet property="lastNameTextField" destination="vqc-YK-V2e" id="5TZ-fj-wSQ"/>
                         <outlet property="myDatePicker" destination="s0M-RB-GU9" id="LZV-Qy-Bt9"/>
                         <outlet property="passwordTextField" destination="CFX-eL-n81" id="JN5-hq-Jcn"/>
@@ -341,7 +342,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ph6-51-rL9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="350" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ph6-51-rL9">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>

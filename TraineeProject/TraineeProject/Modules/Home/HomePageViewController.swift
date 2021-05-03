@@ -24,7 +24,7 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
 
         homePageTableView.addSubview(self.refreshControl)
-        homePageTableView.register(CustomTableViewCell.nib(), forCellReuseIdentifier: CustomTableViewCell.identifier)
+        homePageTableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
         homePageTableView.register(BannerTableViewCell.nib(), forCellReuseIdentifier: BannerTableViewCell.identifier)
         homePageTableView.delegate = self
         homePageTableView.dataSource = self
@@ -66,7 +66,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource{
             cell.configure(homeVM.homeApiData[indexPath.row])
             return cell
         } else {
-            let cell = homePageTableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+            let cell = homePageTableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
             cell.configure(homeVM.homeApiData[indexPath.row])
             return cell
         }
@@ -77,7 +77,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.row == 0 {
             return homePageTableView.frame.width * (9/16)
         } else {
-            return UITableView.automaticDimension
+            return 350.0
         }
     }
     

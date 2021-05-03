@@ -65,7 +65,7 @@ struct  CoreDataManager {
         
         let fetchRequest = NSFetchRequest<NewUserData>(entityName: "NewUserData")
         fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "email == %@", email)
+        fetchRequest.predicate = NSPredicate(format: "emailID == %@", email)
         
         do {
             let details = try context.fetch(fetchRequest)

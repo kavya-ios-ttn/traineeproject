@@ -8,11 +8,12 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell {
         
    
     @IBOutlet weak var titleLabel: UILabel!
     
+   
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
 //    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
@@ -60,7 +61,7 @@ class CustomTableViewCell: UITableViewCell {
         
     }
 
-    extension CustomTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
+    extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return movieInfo?.count ?? 0
         }

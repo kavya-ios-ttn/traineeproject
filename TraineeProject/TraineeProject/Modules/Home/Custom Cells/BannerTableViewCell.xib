@@ -16,11 +16,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="197" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Coy-Zt-1pm">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Coy-Zt-1pm">
                         <rect key="frame" x="0.0" y="0.0" width="197" height="150"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EO5-d2-G6k">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EO5-d2-G6k">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -28,6 +27,12 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Coy-Zt-1pm" secondAttribute="trailing" id="ELM-lW-778"/>
+                    <constraint firstItem="Coy-Zt-1pm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LOy-Yj-gmb"/>
+                    <constraint firstItem="Coy-Zt-1pm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gAE-7P-Pgu"/>
+                    <constraint firstAttribute="bottom" secondItem="Coy-Zt-1pm" secondAttribute="bottom" id="hyD-NG-VTb"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
