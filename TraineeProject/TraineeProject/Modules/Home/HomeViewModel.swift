@@ -10,11 +10,15 @@ import Foundation
 
 class HomeViewModel {
     
+    //created a homeAPIData which stores everything
     var homeApiData: [HomeData] = []
     
     func fetchHomeApiData(completion: @escaping (Bool,String) -> Void){
         
         homeApiData.removeAll()
+        
+                //genre.allCases means that if genre == .banner, append the data of the banner first
+        
                 for genre in ApiConstants.genre.allCases {
                     NetworkManager().fetchApiData(urlType: .home(genre)) { (result) in
                         switch result{
@@ -24,6 +28,9 @@ class HomeViewModel {
                             } else {
                                 self.homeApiData.append(HomeData(sectionTitle: genre.rawValue, movieInfo: data.results))
                             }
+                            
+                            //if completion is true, data will be appended in different table view cells
+                            
                             completion(true, "")
                         case .failure(let error):
                             completion(false, error.localizedDescription)

@@ -15,9 +15,7 @@ class TableViewCell: UITableViewCell {
     
    
     @IBOutlet weak var genreCollectionView: UICollectionView!
-    
-//    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
-    
+        
         var movieInfo: [MovieInfo]?
         
         static let identifier = "TableViewCell"
@@ -29,7 +27,7 @@ class TableViewCell: UITableViewCell {
         override func awakeFromNib() {
             super.awakeFromNib()
             // Initialization code
-            //expandButton.isHidden = true
+           
             self.selectionStyle = .none
             genreCollectionView.register(MainCollectionViewCell.nib(), forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
             
@@ -54,11 +52,7 @@ class TableViewCell: UITableViewCell {
             genreCollectionView.reloadData()
             //buttonAction()
         }
-    //    func buttonAction() {
-    //        collectionViewHeightConstraint.constant = expandButton.isSelected ? 0 : 260
-    //        expandButton.isSelected = !expandButton.isSelected
-    //    }
-        
+
     }
 
     extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{

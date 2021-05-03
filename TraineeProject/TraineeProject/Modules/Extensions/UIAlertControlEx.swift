@@ -12,7 +12,8 @@ import UIKit
 extension UIViewController{
     
     // Global Alert
-    // Define Your number of buttons, styles and completion
+    // Defines number of buttons, styles and completion
+    
     public func openAlert(title: String,
                           message: String,
                           alertStyle:UIAlertController.Style,

@@ -8,10 +8,16 @@
 
 import CoreData
 
+
+//made entity and set attributes in the xcdatamodel as email, firstname, lastname, password and dob
 struct  CoreDataManager {
     
+    //made a singleton class called CoreDataManager
+    //with a shared variable which is static and initializer is made as private
     static let shared = CoreDataManager()
     
+    
+    //PersistentContainer is a container than holds all the UserData and entities(where we put data into a database)
     let persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "TraineeProject")
@@ -24,6 +30,7 @@ struct  CoreDataManager {
          return container
     }()
    
+    //created two functions called createUserDetails and fectchUserDetails to store data
     func createUserDetails(firstName: String, lastName: String, emailID: String, password: String, dob: Date) -> NewUserData? {
         
         let context = persistentContainer.viewContext
@@ -64,7 +71,9 @@ struct  CoreDataManager {
         let context = persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NewUserData>(entityName: "NewUserData")
+        //fetchLimit = 1 means that at a time only one request can be fetched
         fetchRequest.fetchLimit = 1
+        //NSPredicate is a kind of a condition like if email ID matches the format, then it fetches the email
         fetchRequest.predicate = NSPredicate(format: "emailID == %@", email)
         
         do {

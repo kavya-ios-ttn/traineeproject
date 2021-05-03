@@ -11,6 +11,9 @@ import UIKit
 class HomePageViewController: UIViewController {
     
     @IBOutlet weak var homePageTableView: UITableView!
+    
+    //created a variable homeVM which is an object to HomeViewModel
+    
     let homeVM = HomeViewModel()
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -57,6 +60,8 @@ class HomePageViewController: UIViewController {
 
 extension HomePageViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //gives number of rows in table view
         homeVM.homeApiData.count
     }
     
@@ -75,6 +80,9 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
+            
+            //9/16 or 3/4 is a calculated width which adjusts according to the height automatically n the table
+            
             return homePageTableView.frame.width * (9/16)
         } else {
             return 350.0
